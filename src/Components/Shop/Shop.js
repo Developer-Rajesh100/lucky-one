@@ -116,8 +116,8 @@ const Shop = () => {
       price: 56000,
     },
   ];
-  const AddedToCart = () => {
-    console.log("clicked");
+  const AddedToCart = (player) => {
+    console.log(player);
   };
   return (
     <div className="shop-container">
@@ -131,7 +131,13 @@ const Shop = () => {
         ))}
       </div>
       <div className="cart-container">
-        <h4>Cart</h4>
+        <h2>Selected Players</h2>
+        <button className="choose-1-player-buttun">
+          <h4>Choose 1 For Me</h4>
+        </button>
+        <button className="choose-again-buttun">
+          <h4>Choose Again</h4>
+        </button>
       </div>
     </div>
   );

@@ -4,20 +4,25 @@ const PlayersCart = (props) => {
   // const AddedToCart = () => {
   //   console.log("clicked");
   // };
-  const { addToCart } = props;
+  const { addToCart, player } = props;
   return (
     <div className="cart">
-      <img src={props.player.photo} alt="" />
+      <img src={player.photo} alt="" />
       <h3>
-        <i>{props.player.name}</i>{" "}
+        <i>{player.name}</i>{" "}
       </h3>
       <h4>
-        Price : <i>${props.player.price}</i>
+        Price : <i>${player.price}</i>
       </h4>
       {/* <a className="btn" href="#">
         <h6>ADD TO CART</h6>
       </a> */}
-      <button onClick={addToCart} className="btn">
+      <button
+        onClick={() => {
+          addToCart(player);
+        }}
+        className="btn"
+      >
         ADD TO CART
       </button>
     </div>
