@@ -25,6 +25,9 @@
   border: none;
   padding: 5px 15px;
 }
+.random-player {
+  margin-top: 32px;
+}
 .choose-1-player-buttun:hover {
   background-color: #0e758a;
 }

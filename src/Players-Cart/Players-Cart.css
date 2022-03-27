@@ -20,6 +20,9 @@
   bottom: 0;
   right: 0;
 }
+.shoping-cart {
+  margin-left: 5px;
+}
 .btn:hover {
   background-color: #0e758a;
 }

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PlayersCart from "../../Players-Cart/Players-Cart";
+import Random from "../Random/Random";
+import SelectedItems from "../SelectedItems/SelectedItems";
 import "./Shop.css";
 const Shop = () => {
+  const [carts, setCart] = useState([]);
+  const [items, setItems] = useState([]);
   const PlayerData = [
     {
       id: 1,
@@ -117,8 +121,25 @@ const Shop = () => {
     },
   ];
   const AddedToCart = (player) => {
-    console.log(player);
+    if (carts.length <= 3 && !carts.includes(player)) {
+      const newCart = [...carts, player];
+      setCart(newCart);
+    } else {
+      alert("opss");
+    }
   };
+  function getRandomItem(arr) {
+    if (arr.length !== 0) {
+      // get random index value
+      const randomIndex = Math.floor(Math.random() * arr.length);
+
+      // get random item
+      const items = arr[randomIndex];
+      const newItem = [items];
+      setItems(newItem);
+    }
+  }
+  const Clear = () => {};
   return (
     <div className="shop-container">
       <div className="players-container">
@@ -132,11 +153,23 @@ const Shop = () => {
       </div>
       <div className="cart-container">
         <h2>Selected Players</h2>
-        <button className="choose-1-player-buttun">
+
+        <div>
+          {carts.map((cart) => (
+            <SelectedItems cart={cart} key={cart.id}></SelectedItems>
+          ))}
+        </div>
+        <div className="random-player">
+          <h4>Random Player</h4>
+          {items.map((item) => (
+            <Random item={item} key={item.id}></Random>
+          ))}
+        </div>
+        <button
+          onClick={() => getRandomItem(carts)}
+          className="choose-1-player-buttun"
+        >
           <h4>Choose 1 For Me</h4>
-        </button>
-        <button className="choose-again-buttun">
-          <h4>Choose Again</h4>
         </button>
       </div>
     </div>
