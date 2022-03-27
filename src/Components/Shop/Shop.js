@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PlayersCart from "../../Players-Cart/Players-Cart";
+import Question from "../Question/Question";
 import Random from "../Random/Random";
 import SelectedItems from "../SelectedItems/SelectedItems";
 import "./Shop.css";
@@ -121,7 +122,7 @@ const Shop = () => {
     },
   ];
   const AddedToCart = (player) => {
-    if (carts.length <= 3 && !carts.includes(player)) {
+    if (carts.length < 4 && !carts.includes(player)) {
       const newCart = [...carts, player];
       setCart(newCart);
     } else {
@@ -132,14 +133,12 @@ const Shop = () => {
     if (arr.length !== 0) {
       // get random index value
       const randomIndex = Math.floor(Math.random() * arr.length);
-
       // get random item
       const items = arr[randomIndex];
       const newItem = [items];
       setItems(newItem);
     }
   }
-  const Clear = () => {};
   return (
     <div className="shop-container">
       <div className="players-container">
@@ -172,6 +171,7 @@ const Shop = () => {
           <h4>Choose 1 For Me</h4>
         </button>
       </div>
+      <Question></Question>
     </div>
   );
 };
